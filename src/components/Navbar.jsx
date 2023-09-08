@@ -1,8 +1,10 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 import { FaWheelchair } from "react-icons/fa";
 
 function Navbar() {
+  const navigate = useNavigate()
   return (
     <>
       <div className=" w-full h-[12vh] flex items-center px-10 bg-[url('./assets/navbg.png')] bg-cover">
@@ -16,7 +18,7 @@ function Navbar() {
           <div className="  text-xl font-semibold text-white ">FAQ</div>
           <div className="  text-xl font-semibold text-white ">Contact Us</div>
           <div className=" flex items-center">
-            <button className=" px-4 py-1 rounded-2xl text-black  bg-white ">
+            <button onClick={()=>navigate('/login')} className=" px-4 py-1 rounded-2xl text-black  bg-white ">
               Login
             </button>
             <div className=" mx-2  ">or</div>
