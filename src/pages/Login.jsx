@@ -3,7 +3,7 @@ import React from "react";
 const Login = () => {
   return (
     <div>
-      <div className=" w-full h-screen bg-[url('./assets/loginbg.png')] bg-cover flex flex-col items-center p-20">
+      <div className=" w-screen h-screen bg-[url('./assets/loginbg.png')] bg-cover flex flex-col items-center p-20">
         <div className=" font-LeagueGothic text-[#004368] text-5xl font-semibold">
           WELCOME TO NASHA MUKT BHARAT ABHIYAAN
         </div>
