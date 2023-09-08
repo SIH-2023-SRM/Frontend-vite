@@ -1,9 +1,14 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <div className=" font-black text-8xl"> hello</div>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>{" "}
     </>
   );
 }
