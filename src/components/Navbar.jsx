@@ -22,7 +22,7 @@ function Navbar() {
               Login
             </button>
             <div className=" mx-2  ">or</div>
-            <button className=" px-4 py-1 rounded-2xl text-black  bg-white ">
+            <button onClick={()=>navigate('/signup')} className=" px-4 py-1 rounded-2xl text-black  bg-white ">
               Sign up
             </button>
             <div className=" mx-4">
