@@ -6,7 +6,7 @@ import profile from "../assets/profileicon.png";
 function Mission() {
   return (
     <>
-      <div className=" relative w-full h-[70vh] bg-[url('./assets/missionbg.png')] bg-cover flex flex-col items-center px-28 py-10">
+      <div className=" relative w-screen h-[70vh] bg-[url('./assets/missionbg.png')] bg-cover overflow-x-clip flex flex-col items-center px-28 py-10">
         <div className=" font-LeagueGothic text-5xl text-[#004368] font-semibold">
           OUR MISSION
         </div>
@@ -66,7 +66,7 @@ function Mission() {
             alt=""
           />
         </div>
-        <div className=" absolute bottom-[-20%] right-[-5%]  rounded-full overflow-x-hidden w-56 h-56 bg-[#EFEFEF]">
+        <div className=" absolute bottom-[-20%] right-[-5%] rounded-full w-56 h-56 bg-[#EFEFEF]">
           <img
             className=" absolute h-[80%] overflow-x-hidden  bottom-[10%] right-[25%] "
             src={ellipse2}
