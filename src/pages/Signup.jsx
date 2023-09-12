@@ -64,10 +64,10 @@ const Signup = () => {
       }
   };
   return (
-    <div className=' relative'>
+    <div className=' relative'>{currentStep>1 &&
         <div className=' absolute top-10 left-10'>
             <button onClick={handlePrev} className=' w-16 h-16 flex items-center justify-center bg-[#A3CCE3] rounded-full'><img className=' object-contain' src={arrow} alt=''/></button>
-        </div>
+        </div>}
         
       <div className=" w-screen h-screen bg-[url('./assets/loginbg.png')] bg-cover flex flex-col items-center px-20 py-12">
         <div className=" font-LeagueGothic text-[#004368] text-5xl font-semibold">

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import location from "../assets/Location.png";
 import mapImg from "../assets/mapImg.png"
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import { TfiLocationPin } from "react-icons/tfi";
 import down from "../assets/downarrow.png";
 import downarrow from "../assets/arrowdown.png";
@@ -53,9 +55,25 @@ function Center() {
               </div>
             </div>
           </div>
-          <div className="pb-10">
-            <img className="w-[60%] m-auto" src={mapImg} alt="" />
-          </div>
+          <div className=" flex items-center justify-center">
+          <div className="h-[50vh] w-[60%] ">
+      <MapContainer
+        center={[28.6139, 77.2090]} // Initial map center coordinates
+        zoom={10} // Initial zoom level
+        style={{ height: '100%', width: '100%' }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <Marker position={[28.6139, 77.2090]}>
+          <Popup>
+            A sample marker at <br /> Latitude: 28.6139.505, Longitude: 77.2090
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+    </div>
         </div>
         <div className=" w-full h-screen flex flex-col items-center">
           <div className=" font-LeagueGothic text-4xl mt-2 mb-4 font-semibold text-[#004368]">
