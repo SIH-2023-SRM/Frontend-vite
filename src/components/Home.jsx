@@ -1,4 +1,5 @@
 import React from "react";
+import image1 from "../assets/image7.png"
 
 function Home() {
   return (
@@ -20,6 +21,9 @@ function Home() {
             Survey and the inputs provided by the Narcotics Control Bureau
             (NCB).
           </div>
+        </div>
+        <div className="mx-20">
+          <img src={image1} alt="" />
         </div>
       </div>
     </>

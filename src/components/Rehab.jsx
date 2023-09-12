@@ -1,4 +1,5 @@
 import React from "react";
+import group from "../assets/group.png"
 
 function Rehab() {
   return (
@@ -12,7 +13,7 @@ function Rehab() {
           Join the Movement Towards a Substance-Free India
         </div>
         <div className=" w-full h-full grid grid-cols-2">
-          <div></div>
+          <div className="my-16"><img src={group} alt="" /></div>
           <div className=" w-full flex flex-col py-10">
             <div className=" w-full flex flex-col my-6">
               <div className=" font-semibold font-Raleway text-xl">

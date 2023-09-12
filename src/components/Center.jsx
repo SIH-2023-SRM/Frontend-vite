@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import location from "../assets/Location.png";
+import mapImg from "../assets/mapImg.png"
 import { TfiLocationPin } from "react-icons/tfi";
 import down from "../assets/downarrow.png";
 import downarrow from "../assets/arrowdown.png";
@@ -51,6 +52,9 @@ function Center() {
                 <TfiLocationPin size={30} />
               </div>
             </div>
+          </div>
+          <div className="pb-10">
+            <img className="w-[60%] m-auto" src={mapImg} alt="" />
           </div>
         </div>
         <div className=" w-full h-screen flex flex-col items-center">
