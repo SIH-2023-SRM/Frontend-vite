@@ -1,11 +1,112 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import upload from "../assets/upload.png"
+import axios from 'axios';
 
 const Signup5 = (props) => {
+
+    const [uploading, setUploading] = useState(false);
+    const [url,setUrl]=useState("");
+
+    const navigate = useNavigate();
+
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         props.setMedicalFile(file);
       };
+
+
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+
+    
+          const userObject = {
+            patientName: props.name,
+            age: props.age,
+            sex: props.sex,
+            bloodGroup: props.blood,
+            email: props.email,
+            phone: props.mobile,
+            aadharNo: props.aadharno,
+            address: props.address,
+            district: props.district,
+            pincode:props.pincode,
+            state: props.state,
+            maritalStatus: props.maritalstatus,
+            guardianName: props.Guardianname,
+            guardianPhone: props.Guardianmobile,
+            guardianEmail: props.Guardianemail,
+            guardianAddress: props.Guardianaddress,
+            emergencyContactNo: props.emergencycontact,
+            addictionType: props.addictiontype,
+            addictionDuration: props.addictionduration,
+            relapse: props.relapse,
+            allergies: props.allergies,
+            medicationDocURL: url,
+            wellBeingVal: props.wellbeing,
+            mentaldisorders: props.mentaldisorder,
+            disability: props.disability,
+            highestQualification: props.highqualification,
+            employmentStatus: props.employestatus,
+            familyIncome: props.familyincome,
+            insuranceCompany: props.insurancecomp,
+            insurancePolicyNo: props.insurancepolicy,
+            legalandCrimeHistory: props.legalCrime,
+            centerId: props.centerid
+          };
+                try {
+                 const response = await fetch("http://10.4.213.190:8000/users/register", {
+                method: "POST",
+                body: JSON.stringify(userObject),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+                  const data = await response.json();
+                  if(data.result==="data added Successfully"){
+                    navigate('/')
+                  }
+                  console.log(data);
+          
+                } catch (error) {
+                  console.error(error);
+                }
+        
+      };
+  
+
+    const handlefile = async (event) => {
+        event.preventDefault();
+        if(!props.medicalfile){
+          return;
+        }
+        const formData = new FormData();
+       
+        
+          formData.append(`file`, props.medicalfile);
+        
+        console.log("fileForm",formData)
+        try {
+            setUploading(true);
+          const response = await fetch('http://10.4.213.190:8000/users/upload', {
+            method: 'POST',
+            body: formData,
+            
+          });
+          const data = await response.json();
+          
+          console.log(data);
+          setUrl(data.url)
+          console.log(uploading)
+          
+
+        } catch (error) {
+          console.error(error);
+          setUploading(false);
+        }
+      };
+
+
   return (
     <div className=' w-full items-center flex justify-center'>
      <form className=" w-[50%] bg-[url('./assets/loginformbg.png')] bg-cover px-16 py-5 flex flex-col items-center mt-10 mb-16">
@@ -96,19 +197,19 @@ const Signup5 = (props) => {
               id="fileInput"
               placeholder="Upload Government ID proof of the patient"
               required
-              
+              name='medicalfile'
               onChange={handleFileChange}
               type="file"
             />
-            <label
+            {!props.medicalfile && !uploading ?<label
           htmlFor="fileInput"
           className=" px-3 py-2 rounded-full border flex justify-between items-center cursor-pointer "
         >
-          <div className=' mx-1'>Upload</div><div className=' mx-1'><img src={upload} alt=''/></div>
-        </label>
+          <div className=' mx-1'>Select File</div><div className=' mx-1'><img src={upload} alt=''/></div>
+        </label>:!uploading?<button onClick={handlefile}>Upload</button>:<button>done</button>}
           </div>
           
-          <button  className=" px-8 py-[0.64rem] bg-[url('./assets/viewbtnbg.png')] bg-cover text-xl text-[#F6F6F6] mt-4 ">
+          <button onClick={handleSubmit}  className=" px-8 py-[0.64rem] bg-[url('./assets/viewbtnbg.png')] bg-cover text-xl text-[#F6F6F6] mt-4 ">
             Submit
           </button>
         </form>
